@@ -31,10 +31,10 @@ fg = folium.FeatureGroup(name="My Map")
 
 #for loop for multiplecoordinates as list
 for lt, ln, el in zip(lat, lon, elev):
-    fg.add_child(folium.Marker(location=[lt, ln],popup=str(el)+" m", icon=folium.Icon(color=color_producer(el))))
-    #popup accepts only string characters
-
+    fg.add_child(folium.CircleMarker(location=[lt, ln],popup=str(el)+" m", radius=10, fill_opacity=0.6, fill_color=color_producer(el), color=color_producer(el)))
     map.add_child(fg)
-
+    #CircleMarker with parameters radius, fill_color, color, fill_opacity
+    #popup accepts only string characters
+    #changed from icon=folium.Icon(color=color_producer(el))
 
 map.save("maptest6.html")
